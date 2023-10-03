@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CharacterState
+{
+    Grounded = 0,
+    Airborne = 1,
+    Jumping = 2,
+    Total
+}
 public class MovementController : MonoBehaviour
 {
-    public enum CharacterState
-    {
-        Grounded = 0,
-        Airborne = 1,
-        Jumping = 2,
-        Total
-    }
 
     public CharacterState JumpingState = CharacterState.Airborne;
 
@@ -34,7 +34,7 @@ public class MovementController : MonoBehaviour
         transform.position = gravityPosition; // Assaign new pos to transform
 
         //1. Check if player is on the ground so they can jump
-        if(transform.position.y <= GroundLevel)
+        if (transform.position.y <= GroundLevel)
         {
             Vector3 characterPosition = transform.position;
             characterPosition.y = GroundLevel;
@@ -52,11 +52,11 @@ public class MovementController : MonoBehaviour
         if (JumpingState == CharacterState.Jumping)
         {
             Vector3 characterPosition = transform.position;
-            float totalJumpMovementThisFrame += MovementSpeedPerSecond * JumpSpeedFactor * Time.deltaTime;
+            float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor * Time.deltaTime;
             characterPosition.y += totalJumpMovementThisFrame;
             transform.position = characterPosition;
             JumpHeightDelta += totalJumpMovementThisFrame;
-            if(JumpHeightDelta >= JumpMaxHeight)
+            if (JumpHeightDelta >= JumpMaxHeight)
             {
                 JumpingState = CharacterState.Airborne;
                 JumpHeightDelta = 0.0f;
@@ -64,7 +64,7 @@ public class MovementController : MonoBehaviour
         }
 
         //Left
-        if(Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             Vector3 characterPosition = transform.position; //copy char position
             characterPosition.x -= MovementSpeedPerSecond * Time.deltaTime; //add movementspeed * time per frame
@@ -72,15 +72,15 @@ public class MovementController : MonoBehaviour
         }
 
         //Down
-        if(Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             Vector3 characterPosition = transform.position; //copy char position
             characterPosition.y -= MovementSpeedPerSecond * Time.deltaTime; //add movementspeed * time per frame
             transform.position = characterPosition; //assign new position
-        
+        }
 
         //Right
-        if(Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             Vector3 characterPosition = transform.position; //copy char position
             characterPosition.x += MovementSpeedPerSecond * Time.deltaTime; //add movementspeed * time per frame
