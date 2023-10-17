@@ -27,59 +27,48 @@ public class PhysicsCharacterController : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 characterVelocity = myRigidBody.velocity;
+        characterVelocity.x = 0.0f;
+        characterVelocity.y = 0.0f;
 
-        //1. Check if player is on the ground so they can jump
-        if (transform.position.y <= GroundLevel)
+        if(JumpingState != CharacterState.Jumping)
         {
-            Vector3 characterPosition = transform.position;
-            characterPosition.y = GroundLevel;
-            transform.position = characterPosition;
             JumpingState = CharacterState.Grounded;
         }
+
         //Up
-        //2. Check if player presses the jump button
         if (Input.GetKey(KeyCode.W) && JumpingState == CharacterState.Grounded)
         {
             JumpingState = CharacterState.Jumping; //Set character to jumping
             JumpHeightDelta = 0.0f; //Restart counting jumpdistance
         }
-        //3. Do the jump math
+
         if (JumpingState == CharacterState.Jumping)
         {
-            Vector3 characterPosition = transform.position;
-            float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor * Time.deltaTime;
-            characterPosition.y += totalJumpMovementThisFrame;
-            transform.position = characterPosition;
+            float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor;
+            characterVelocity.y += totalJumpMovementThisFrame;
+
             JumpHeightDelta += totalJumpMovementThisFrame;
             if (JumpHeightDelta >= JumpMaxHeight)
             {
                 JumpingState = CharacterState.Airborne;
                 JumpHeightDelta = 0.0f;
+                characterVelocity.y = 0.0f;
             }
         }
 
-        //Down
-        if (Input.GetKey(KeyCode.S))
-        {
-            Vector3 characterPosition = transform.position; //copy char position
-            characterPosition.y -= MovementSpeedPerSecond * Time.deltaTime; //add movementspeed * time per frame
-            transform.position = characterPosition; //assign new position
-        }
-
-        Vector3 characterVelocity = myRigidBody.velocity;
-        characterVelocity.x = 0.0f;
         //Left
         if (Input.GetKey(KeyCode.A))
         {
             characterVelocity.x -= MovementSpeedPerSecond;
-            myRigidBody.velocity = characterVelocity;
+           
         }
 
         //Right
         if (Input.GetKey(KeyCode.D))
         {
             characterVelocity.x += MovementSpeedPerSecond;
-            myRigidBody.velocity = characterVelocity;
         }
+        myRigidBody.velocity = characterVelocity;
     }
 }
