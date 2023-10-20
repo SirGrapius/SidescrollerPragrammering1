@@ -1334,6 +1334,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5928286800391851623, guid: bb2574f849c8abf428d54c594987faff, type: 3}
+      propertyPath: JumpMaxHeight
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7673447820767235951, guid: bb2574f849c8abf428d54c594987faff, type: 3}
       propertyPath: m_Name
       value: NewChimp-16x18
