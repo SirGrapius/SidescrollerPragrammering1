@@ -20,35 +20,36 @@ public class PhysicsCharacterController : MonoBehaviour
     public float JumpMaxHeight = 150.0f;
     [SerializeField]
     private float JumpHeightDelta = 0.0f;
+    private float JumpStartingY = 0.0f;
 
     //Movement
     public float MovementSpeedPerSecond = 10.0f; //Movement Speed
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && JumpingState == CharacterState.Grounded)
+        {
+            JumpingState = CharacterState.Jumping; //Set character to jumping
+            JumpHeightDelta = 0.0f; //Restart Counting Jumpdistance
+            JumpStartingY = transform.position.y;
+        }
+    }
 
 
     void FixedUpdate()
     {
         Vector3 characterVelocity = myRigidBody.velocity;
         characterVelocity.x = 0.0f;
-        characterVelocity.y = 0.0f;
-
-        if(JumpingState != CharacterState.Jumping)
-        {
-            JumpingState = CharacterState.Grounded;
-        }
-
-        //Up
-        if (Input.GetKey(KeyCode.W) && JumpingState == CharacterState.Grounded)
-        {
-            JumpingState = CharacterState.Jumping; //Set character to jumping
-            JumpHeightDelta = 0.0f; //Restart counting jumpdistance
-        }
 
         if (JumpingState == CharacterState.Jumping)
         {
-            float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor;
-            characterVelocity.y += totalJumpMovementThisFrame;
 
-            JumpHeightDelta += totalJumpMovementThisFrame;
+            float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor;
+            characterVelocity.y = totalJumpMovementThisFrame;
+
+            JumpHeightDelta += totalJumpMovementThisFrame * Time.deltaTime;
+
             if (JumpHeightDelta >= JumpMaxHeight)
             {
                 JumpingState = CharacterState.Airborne;
