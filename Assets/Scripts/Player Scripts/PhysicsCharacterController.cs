@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PhysicsCharacterController : MonoBehaviour
 {
+    public SpriteRenderer mySpriteRender = null;
+    public List<Sprite> CharacterSprite = new List<Sprite>();
+    public int HP = 1;
     //reference to rigid body on the same object
     public Rigidbody2D myRigidBody = null;
 
@@ -28,17 +31,30 @@ public class PhysicsCharacterController : MonoBehaviour
 
     private void Update()
     {
+        int hpCopy = HP - 1;
+        if (hpCopy < 0)
+        {
+            hpCopy = 0;
+        }
+        if (hpCopy >= CharacterSprite.Count)
+        {
+            hpCopy = CharacterSprite.Count - 1;
+        }
+        mySpriteRender.sprite = CharacterSprite[hpCopy];
+
+
+    }
+
+
+    void FixedUpdate()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && JumpingState == CharacterState.Grounded)
         {
             JumpingState = CharacterState.Jumping; //Set character to jumping
             JumpHeightDelta = 0.0f; //Restart Counting Jumpdistance
             JumpStartingY = transform.position.y;
         }
-    }
 
-
-    void FixedUpdate()
-    {
         Vector3 characterVelocity = myRigidBody.velocity;
         characterVelocity.x = 0.0f;
 

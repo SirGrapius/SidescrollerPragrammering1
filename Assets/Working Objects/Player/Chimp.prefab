@@ -172,6 +172,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0090624c1f85f479aca7f57af42dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mySpriteRender: {fileID: 6801348089525369433}
+  CharacterSprite:
+  - {fileID: 21300000, guid: 6d2938549a754af47a9cefcfa1ce7166, type: 3}
+  - {fileID: 21300000, guid: f0661e67dfde74e438f95f10ed03222f, type: 3}
+  - {fileID: 21300000, guid: b6052eeebaf49db458b8e4d3d2fce42d, type: 3}
+  HP: 2
   myRigidBody: {fileID: 7587627931011832707}
   JumpingState: 1
   GravityPerSecond: 160
