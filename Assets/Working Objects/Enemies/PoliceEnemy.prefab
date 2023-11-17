@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59f3bf2e4394ef479761b2ce70a1c9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 1
   myRigidBody: {fileID: 5805794473310244806}
   MovementSpeedPerSecond: 10
 --- !u!1 &5173311424581502358
@@ -186,6 +187,7 @@ GameObject:
   - component: {fileID: 4667180663044157186}
   - component: {fileID: 7382979004186349863}
   - component: {fileID: 5717623332491987632}
+  - component: {fileID: 9056829446135077889}
   m_Layer: 0
   m_Name: Collision Right
   m_TagString: Untagged
@@ -263,8 +265,22 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 23}
+  m_Size: {x: 3, y: 18}
   m_EdgeRadius: 0
+--- !u!114 &9056829446135077889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173311424581502358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5906d32009216d44a25c3df74e02c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayer: 0
+  DamageValue: -1
 --- !u!1 &7239322096972836754
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +292,7 @@ GameObject:
   - component: {fileID: 7365473906238868492}
   - component: {fileID: 7060245330625807666}
   - component: {fileID: 4216735284150287771}
+  - component: {fileID: 8927159254005430059}
   m_Layer: 0
   m_Name: Collision Left
   m_TagString: Untagged
@@ -353,5 +370,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 23}
+  m_Size: {x: 3, y: 18}
   m_EdgeRadius: 0
+--- !u!114 &8927159254005430059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7239322096972836754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5906d32009216d44a25c3df74e02c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayer: 0
+  DamageValue: -1

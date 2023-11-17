@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7587627931011832707}
   - component: {fileID: 4367930483328030297}
   - component: {fileID: 5928286800391851623}
+  - component: {fileID: 6039951064607082802}
   m_Layer: 0
   m_Name: Chimp
   m_TagString: Untagged
@@ -186,6 +187,18 @@ MonoBehaviour:
   JumpMaxHeight: 48
   JumpHeightDelta: 0
   MovementSpeedPerSecond: 50
+--- !u!114 &6039951064607082802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673447820767235951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1230fc23b3b80640b4a0e9ef470875d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8976030414834625105
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +210,7 @@ GameObject:
   - component: {fileID: 2443763564230974027}
   - component: {fileID: 6238999283432764931}
   - component: {fileID: 7248370479404279964}
+  - component: {fileID: 6900607550069686542}
   m_Layer: 0
   m_Name: CollisionCheckObject
   m_TagString: Untagged
@@ -277,3 +291,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCharacterController: {fileID: 5928286800391851623}
+--- !u!114 &6900607550069686542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976030414834625105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5906d32009216d44a25c3df74e02c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsPlayer: 1
+  DamageValue: -1

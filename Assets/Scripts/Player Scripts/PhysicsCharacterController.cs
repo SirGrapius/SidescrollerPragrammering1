@@ -31,6 +31,14 @@ public class PhysicsCharacterController : MonoBehaviour
 
     private void Update()
     {
+        if(HP <= 0)
+        {
+            SceneLoader mySceneLoader = gameObject.GetComponent<SceneLoader>();
+            if(mySceneLoader != null )
+            {
+                mySceneLoader.LoadScene("GameOver");
+            }
+        }
         int hpCopy = HP - 1;
         if (hpCopy < 0)
         {
@@ -87,5 +95,10 @@ public class PhysicsCharacterController : MonoBehaviour
             characterVelocity.x += MovementSpeedPerSecond;
         }
         myRigidBody.velocity = characterVelocity;
+    }
+
+    public void TakeDamage(int aHPValue)
+    {
+        HP += aHPValue;
     }
 }

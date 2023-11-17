@@ -5,15 +5,15 @@ using UnityEngine.TextCore.Text;
 
 public class PowerupScript : MonoBehaviour
 {
-    public int addHealth = 1;
+    public int AddHealth = 1;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var Banana = collision.gameObject.GetComponent<PhysicsCharacterController>();
         if (Banana != null )
         {
-            Banana.HP += addHealth;
-            addHealth = 0;
+            Banana.HP += AddHealth;
+            AddHealth = 0;
             GameObject.Destroy(gameObject);
         }
     }
