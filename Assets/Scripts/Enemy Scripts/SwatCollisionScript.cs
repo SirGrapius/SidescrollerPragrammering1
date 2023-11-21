@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollision : MonoBehaviour
+public class SwatCollisionScript : MonoBehaviour
 {
-    public PoliceEnemy myEnemyScript = null;
+    public SwatEnemyScript myEnemyScript = null;
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Vector3 enemyscale = myEnemyScript.transform.localScale;

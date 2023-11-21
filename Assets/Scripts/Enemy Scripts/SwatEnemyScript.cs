@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PoliceEnemy : MonoBehaviour
+public class SwatEnemyScript : MonoBehaviour
 {
     public int HP = 0;
     public Rigidbody2D myRigidBody = null;
@@ -13,11 +12,19 @@ public class PoliceEnemy : MonoBehaviour
     {
         HP += aHPValue;
 
-        if(HP < 0)
+        if (HP < 0)
         {
             GameObject.Destroy(gameObject);
         }
+        if (HP >= CharacterSprite.Count)
+        {
+            HP = CharacterSprite.Count - 1;
+        }
     }
+
+    public SpriteRenderer mySpriteRender = null;
+    public List<Sprite> CharacterSprite = new List<Sprite>();
+
 
 
     void FixedUpdate()

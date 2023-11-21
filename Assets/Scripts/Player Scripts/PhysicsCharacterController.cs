@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class PhysicsCharacterController : MonoBehaviour
 {
+    public PlayerData Savefile;
+    public GameObject collision = null;
     public SpriteRenderer mySpriteRender = null;
     public List<Sprite> CharacterSprite = new List<Sprite>();
     public int HP = 1;
     //reference to rigid body on the same object
     public Rigidbody2D myRigidBody = null;
+    public GameObject myCollisionCheckObject;
 
     public CharacterState JumpingState = CharacterState.Airborne;
     //is our character on the ground or in the air?
@@ -48,7 +51,13 @@ public class PhysicsCharacterController : MonoBehaviour
         {
             hpCopy = CharacterSprite.Count - 1;
         }
-        mySpriteRender.sprite = CharacterSprite[hpCopy];
+        if (mySpriteRender.sprite = CharacterSprite[hpCopy])
+        {
+            mySpriteRender.sprite = CharacterSprite[hpCopy];
+            Destroy(GetComponent<PolygonCollider2D>());
+            var polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
+            myCollisionCheckObject.transform.position = polygonCollider.ClosestPoint(myCollisionCheckObject.transform.position);
+        }
 
 
     }
