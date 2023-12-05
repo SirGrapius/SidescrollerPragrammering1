@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5928286800391851623}
   - component: {fileID: 6039951064607082802}
   - component: {fileID: 9173166891672429334}
+  - component: {fileID: 3598745087965575660}
   m_Layer: 0
   m_Name: Chimp
   m_TagString: Untagged
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0090624c1f85f479aca7f57af42dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAnimator: {fileID: 3598745087965575660}
   Savefile: {fileID: 0}
   collision: {fileID: 8976030414834625105}
   mySpriteRender: {fileID: 6801348089525369433}
@@ -135,7 +137,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6d2938549a754af47a9cefcfa1ce7166, type: 3}
   - {fileID: 21300000, guid: f0661e67dfde74e438f95f10ed03222f, type: 3}
   - {fileID: 21300000, guid: b6052eeebaf49db458b8e4d3d2fce42d, type: 3}
-  HP: 2
+  HP: 1
   myRigidBody: {fileID: 7587627931011832707}
   myCollisionCheckObject: {fileID: 8976030414834625105}
   JumpingState: 1
@@ -208,6 +210,27 @@ PolygonCollider2D:
       - {x: 8, y: 8}
       - {x: 7, y: 9}
   m_UseDelaunayMesh: 0
+--- !u!95 &3598745087965575660
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673447820767235951}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1612a49786f40ac4a868ff4ea32e823e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8976030414834625105
 GameObject:
   m_ObjectHideFlags: 0

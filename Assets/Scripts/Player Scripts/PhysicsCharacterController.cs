@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PhysicsCharacterController : MonoBehaviour
 {
+    public Animator myAnimator = null;
+
     public PlayerData Savefile;
     public GameObject collision = null;
     public SpriteRenderer mySpriteRender = null;
@@ -59,14 +61,15 @@ public class PhysicsCharacterController : MonoBehaviour
             myCollisionCheckObject.transform.position = polygonCollider.ClosestPoint(myCollisionCheckObject.transform.position);
         }
 
-
     }
 
 
     void FixedUpdate()
     {
+        myAnimator.SetBool("IsJumping", false);
         if (Input.GetKeyDown(KeyCode.Space) && JumpingState == CharacterState.Grounded)
         {
+            myAnimator.SetBool("IsJumping", true);
             JumpingState = CharacterState.Jumping; //Set character to jumping
             JumpHeightDelta = 0.0f; //Restart Counting Jumpdistance
             JumpStartingY = transform.position.y;
@@ -77,7 +80,6 @@ public class PhysicsCharacterController : MonoBehaviour
 
         if (JumpingState == CharacterState.Jumping)
         {
-
             float totalJumpMovementThisFrame = MovementSpeedPerSecond * JumpSpeedFactor;
             characterVelocity.y = totalJumpMovementThisFrame;
 
@@ -90,18 +92,25 @@ public class PhysicsCharacterController : MonoBehaviour
                 characterVelocity.y = 0.0f;
             }
         }
-
+        myAnimator.SetBool("IsWalking", false);
         //Left
         if (Input.GetKey(KeyCode.A))
         {
             characterVelocity.x -= MovementSpeedPerSecond;
-           
+            myAnimator.SetBool("IsWalking", true);
+            Vector3 playerScale = transform.localScale;
+            playerScale.x = -(Mathf.Abs(playerScale.x));
+            transform.localScale = playerScale;
         }
 
         //Right
         if (Input.GetKey(KeyCode.D))
         {
             characterVelocity.x += MovementSpeedPerSecond;
+            myAnimator.SetBool("IsWalking", true);
+            Vector3 playerScale = transform.localScale;
+            playerScale.x = Mathf.Abs(playerScale.x);
+            transform.localScale = playerScale;
         }
         myRigidBody.velocity = characterVelocity;
     }
