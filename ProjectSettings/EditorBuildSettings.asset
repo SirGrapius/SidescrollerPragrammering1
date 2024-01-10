@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level4.unity
     guid: 4dd3dd2596a5692439d2234bc5e14fe6
   - enabled: 1
-    path: Assets/Scenes/GameOver.unity
+    path: Assets/Examination/ExScenes/GameOver.unity
     guid: 7463a9458a66cb94d9f2faa2092417d7
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Animator.unity
     guid: 85bbec57071d97243ba97ac59bb53fdd
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupLevel1.unity
+    guid: 26d5a9d446d14f340bac0ae785887242
   m_configObjects: {}

@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShmupPlayer : MonoBehaviour
 {
-    public Rigidbody2D myRigidBody2d = null; //reference to rigidbody
+    public ShmupPlayerData CurrentPlayerData;
+    public PlayerBulletScript PlayerBulletPrefab = null;
     public float MovementSpeedPS = 1.0f; //players movement speed per second
     public int MaxHealth = 5; //players health limit
-    public int CurrentHealth; //players current health
-    public HealthBarScript HealthBar; //reference to healthbar script
-    public SceneLoader SceneLoader; //reference to sceneloader script
-    public string NextScene = "GameOver";
+
+    public TextMeshProUGUI PointText = null;
+    public TextMeshProUGUI HealthText = null;
+
+    public float Cooldown = 0.25f;
+    float LastShot;
 
     //Movement Scripts
-    private void Update()
+    void FixedUpdate()
     {
         //Go up
         if (Input.GetKey(KeyCode.W))
@@ -44,33 +49,38 @@ public class ShmupPlayer : MonoBehaviour
             characterPosition.x += MovementSpeedPS * Time.deltaTime;
             transform.position = characterPosition;
         }
-        //Damage test
+        //Bullet Firing
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            TakeDamage(1);
+            if (Time.time - LastShot < Cooldown)
+            {
+                return;
+            }
+            LastShot = Time.time;
+            GameObject.Instantiate(PlayerBulletPrefab, this.transform.position, PlayerBulletPrefab.transform.rotation);
         }
 
     }
 
-    //Set base health
     void Start()
     {
-        CurrentHealth = MaxHealth;
-        HealthBar.SetMaxHealth(MaxHealth);
+        CurrentPlayerData.HP = 5;
     }
 
-    //Taking damage
-    void TakeDamage(int Damage)
-    {
-        CurrentHealth -= Damage;
-        HealthBar.SetHealth(CurrentHealth);
-    }
 
-    private void Reset()
+    private void Update()
     {
-        if (CurrentHealth >= 0)
+        if(CurrentPlayerData.HP <= 0)
         {
-            SceneLoader.LoadScene(NextScene);
+            ShmupSceneLoader mySceneLoader = gameObject.GetComponent<ShmupSceneLoader>();
+            if(mySceneLoader != null ) 
+            {
+                mySceneLoader.LoadScene("GameOver");
+            }
         }
+
+        HealthText.text = CurrentPlayerData.HP + "HP";
+        PointText.text = CurrentPlayerData.PlayerPoints + "Points";
     }
+
 }

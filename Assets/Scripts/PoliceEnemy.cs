@@ -32,4 +32,5 @@ public class PoliceEnemy : MonoBehaviour
         //Copy modified velocity to rigidbody
         myRigidBody.velocity = characterVelocity;
     }
+
 }
