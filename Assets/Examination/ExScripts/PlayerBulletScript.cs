@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerBulletScript : MonoBehaviour
@@ -31,6 +32,12 @@ public class PlayerBulletScript : MonoBehaviour
         if (bossComp != null)
         {
             bossComp.TakeDamage();
+            GameObject.Destroy(gameObject);
+        }
+        KarenMissileScript blastComp = collision.gameObject.GetComponent<KarenMissileScript>();
+        if (blastComp != null)
+        {
+            blastComp.TakeDamage();
             GameObject.Destroy(gameObject);
         }
     }

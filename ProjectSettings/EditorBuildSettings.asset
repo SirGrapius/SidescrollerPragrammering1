@@ -35,4 +35,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Examination/ExScenes/ShmupLevel1.unity
     guid: 26d5a9d446d14f340bac0ae785887242
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupLevel2.unity
+    guid: d8c34b27f765a9041abac64cb6ce7b99
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupLevel3.unity
+    guid: 18859ee7758e5e64fa8acdc5266b43d6
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupLevelFinal.unity
+    guid: 29fd638b1ffe0514f918eb000a36d1db
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupWin1.unity
+    guid: bae33609ae9d1554785a13ba12918c98
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupWin2.unity
+    guid: 194d71bd1c20fc546b27ed74836ae68b
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupWin3.unity
+    guid: a8c4c3e83b9e5e84788d18f6251d50e7
+  - enabled: 1
+    path: Assets/Examination/ExScenes/ShmupFinalWin.unity
+    guid: 217e24f676b72cd459b475b49ca18553
   m_configObjects: {}

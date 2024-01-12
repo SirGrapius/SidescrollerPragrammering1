@@ -10,47 +10,35 @@ public class KarenScript : MonoBehaviour
     public ShmupPlayerData CurrentPlayerData = null;
     public PlayerBulletScript Bullet = null;
     public SpriteRenderer mySpriteRenderer = null;
+    public ShmupSceneLoader mySceneLoaderEX = null;
+    public string NextScene = "ShmupWinFinal";
     public List<Sprite> KarenSprites = new List<Sprite>();
     public float RiseSpeed = 10.0f;
-    //Enemy Spawning
-    public float spawnRate = 10.0f;
-    public GameObject[] ShmupEnemy;
-    private bool canSpawn = true;
 
-    private void Start()
+
+    void Start()
     {
-        StartCoroutine(Spawner());
+
     }
 
-    private IEnumerator Spawner () { 
-        WaitForSeconds wait = new WaitForSeconds(spawnRate);
-        while (canSpawn)
-        {
-            yield return wait;
-            int rand = Random.Range(0, ShmupEnemy.Length);
-            GameObject enemyToSpawn = ShmupEnemy[rand];
 
-            Instantiate(enemyToSpawn, transform.position, Quaternion.identity);
-        }
-    
-    }
 
     private void Update()
     {
         int SpriteValue = 0;
-       if (Health <= 160)
+       if (Health <= 240)
         {
             SpriteValue = 1;
         }
-        if (Health <= 115)
+        if (Health <= 190)
         {
             SpriteValue = 2;
         }
-        if (Health <= 80)
+        if (Health <= 130)
         {
             SpriteValue = 3;
         }
-        if (Health <= 50)
+        if (Health <= 80)
         {
             SpriteValue = 4;
         }
@@ -76,6 +64,14 @@ public class KarenScript : MonoBehaviour
         if (Health <= 0)
         {
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            if (GetComponent<Rigidbody2D>().position.y <= -1000);
+            {
+                ShmupSceneLoader mySceneLoader = gameObject.GetComponent<ShmupSceneLoader>();
+                if (mySceneLoader != null)
+                {
+                    mySceneLoaderEX.LoadScene(NextScene);
+                }
+            }
         }
     }
 

@@ -171,6 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ba0c1cb321706418347d9349411058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OffScreenChecker: {fileID: 0}
+  OffScreenChecker: {fileID: 1873341501655897520, guid: b862079d983ddba47ba0fe69c2e35ed5, type: 3}
   MovementSpeed: 60
   BulletDamage: 1
